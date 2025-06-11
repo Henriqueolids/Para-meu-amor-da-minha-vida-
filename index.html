@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Darkzinha</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1, h2 { margin: 1rem 0; }
+    #contador { font-size: 1.5rem; margin: 1rem 0; }
+    #photos img {
+      display: none;
+      max-width: 90%;
+      border-radius: 12px;
+      margin: 2rem auto;
+    }
+    #photos img.active { display: block; }
+    iframe { margin-top: 1rem; border-radius: 12px; }
+    footer { margin-top: 3rem; font-size: 0.9rem; color: #aaa; }
+  </style>
+</head>
+<body>
+  <h1>Para o amor da minha vida</h1>
+  <p>Obrigado por quem você é comigo. Saiba que eu te amo muito, meu amor. Você é o meu motivo de tudo na vida. Obrigado, meu amor. Você é minha melhor memória, meu melhor sorriso, e claro, você é o meu amor.</p>
+  <h2>Ligações de alma – parte do Baco Exu do Blues</h2>
+
+  <div id="contador">Carregando tempo juntos...</div>
+
+  <div id="photos">
+    <img src="foto1.jpg" alt="Foto 1" class="active">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+  </div>
+
+  <iframe id="player" width="320" height="180"
+    src="https://www.youtube.com/embed/Xvx2CH06R4E?start=96&end=150&autoplay=1&loop=1&controls=1"
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
+
+  <footer>Criado com carinho para Darkzinha — por alguém que te ama profundamente.</footer>
+
+  <script>
+    // Contador
+    const start = new Date('2023-12-08T00:00:00');
+    const cnt = () => {
+      const now = new Date();
+      let diff = now - start;
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff -= days*1000*60*60*24;
+      const hrs = Math.floor(diff / (1000*60*60));
+      diff -= hrs*1000*60*60;
+      const mins = Math.floor(diff / (1000*60));
+      const secs = Math.floor((diff - mins*60*1000)/1000);
+      document.getElementById('contador').textContent = `${days} dias, ${hrs}h ${mins}m ${secs}s juntos`;
+    };
+    setInterval(cnt, 1000);
+    cnt();
+
+    // Troca de fotos
+    const imgs = document.querySelectorAll('#photos img');
+    let idx = 0;
+    setInterval(() => {
+      imgs[idx].classList.remove('active');
+      idx = (idx + 1) % imgs.length;
+      imgs[idx].classList.add('active');
+    }, 5000);
+  </script>
+</body>
+</html>
